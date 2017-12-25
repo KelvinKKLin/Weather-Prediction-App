@@ -22,8 +22,21 @@ y = []
 
 for line in f.readlines():
     line = line.split(",")
-    X.append((line[:len(line) - 1]))
-    y.append(float(line[-1].strip("\n")))
+    factors = []
+    if isIce:
+        factors.append(line[0])
+    if isRain:
+        factors.append(line[1])
+    if isWind:
+        factors.append(line[2])
+    if isDry:
+        factors.append(line[3])
+    if isSnow:
+        factors.append(line[4])
+    if isCold:
+        factors.append(line[5])
+
+    y.append(float(line[6])
 
 for i in range(len(X)):
     for j in range(len(X[i])):
@@ -34,7 +47,6 @@ for i in range(len(X)):
 
 clf = svm.SVC()
 clf.fit(X, y)
-
 
 print(clf.predict([[param1, param2, param3, param4, param5]]))
 
