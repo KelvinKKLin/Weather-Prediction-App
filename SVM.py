@@ -30,17 +30,17 @@ lines = f.readlines()
 for i in range(1, len(lines)):
     line = lines[i].split(",")
     factors = []
-    if isIce:
+    if isIce == "1":
         factors.append(float(line[0]))
-    if isRain:
+    if isRain == "1":
         factors.append(float(line[1]))
-    if isWind:
+    if isWind == "1":
         factors.append(float(line[2]))
-    if isDry:
+    if isDry == "1":
         factors.append(float(line[3]))
-    if isSnow:
+    if isSnow == "1":
         factors.append(float(line[4]))
-    if isCold:
+    if isCold == "1":
         factors.append(float(line[5]))
 
     X.append(factors)
@@ -51,17 +51,17 @@ clf = svm.SVC()
 clf.fit(X, y)
 
 #Determine which parameters to feed to the SVM
-if isIce:
+if isIce  == "1":
     params.append(param0)
-if isRain:
+if isRain == "1":
     params.append(param1)
-if isWind:
+if isWind == "1":
     params.append(param2)
-if isDry:
+if isDry == "1":
     params.append(param3)
-if isSnow:
+if isSnow == "1":
     params.append(param4)
-if isCold:
+if isCold == "1":
     params.append(param5)
 
 #Use the SVM to generate a prediction, and print it to the console
