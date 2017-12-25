@@ -2,6 +2,7 @@ import sys
 from sklearn import svm
 import numpy as np
 
+#Read arguments from the command line
 isIce  = sys.argv[1]
 isRain = sys.argv[2]
 isWind = sys.argv[3]
@@ -9,45 +10,62 @@ isDry  = sys.argv[4]
 isSnow = sys.argv[5]
 isCold = sys.argv[6]
 
-param1 = sys.argv[7]
-param2 = sys.argv[8]
-param3 = sys.argv[9]
-param4 = sys.argv[10]
-param5 = sys.argv[11]
+param0 = sys.argv[7]
+param1 = sys.argv[8]
+param2 = sys.argv[9]
+param3 = sys.argv[10]
+param4 = sys.argv[11]
+param5 = sys.argv[12]
 
-f = open("processed_weather2.csv", "r")
+#Open the data file
+f = open("weather_data.csv", "r")
 
 X = []
 y = []
+params = []
 
-for line in f.readlines():
-    line = line.split(",")
+#Read the data file and store the desired attributes and labels into
+#X and y.
+lines = f.readlines()
+for i in range(1, len(lines)):
+    line = lines[i].split(",")
     factors = []
     if isIce:
-        factors.append(line[0])
+        factors.append(float(line[0]))
     if isRain:
-        factors.append(line[1])
+        factors.append(float(line[1]))
     if isWind:
-        factors.append(line[2])
+        factors.append(float(line[2]))
     if isDry:
-        factors.append(line[3])
+        factors.append(float(line[3]))
     if isSnow:
-        factors.append(line[4])
+        factors.append(float(line[4]))
     if isCold:
-        factors.append(line[5])
+        factors.append(float(line[5]))
 
-    y.append(float(line[6])
+    X.append(factors)
+    y.append(float(line[6]))
 
-for i in range(len(X)):
-    for j in range(len(X[i])):
-        try:
-            X[i][j] = float(X[i][j])
-        except:
-            print(i)
-
+#Create and train the SVM
 clf = svm.SVC()
 clf.fit(X, y)
 
-print(clf.predict([[param1, param2, param3, param4, param5]]))
+#Determine which parameters to feed to the SVM
+if isIce:
+    params.append(param0)
+if isRain:
+    params.append(param1)
+if isWind:
+    params.append(param2)
+if isDry:
+    params.append(param3)
+if isSnow:
+    params.append(param4)
+if isCold:
+    params.append(param5)
 
+#Use the SVM to generate a prediction, and print it to the console
+print(clf.predict([params]))
+
+#Close the file
 f.close()
