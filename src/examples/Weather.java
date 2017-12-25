@@ -13,7 +13,7 @@ public class Weather extends javax.swing.JFrame {
         initComponents();
         dangerLabel.setVisible(false);
     }
-
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -210,7 +210,7 @@ public class Weather extends javax.swing.JFrame {
     }//GEN-LAST:event_iceActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        
         //Read the values from the checkboxes
         boolean considerIce = ice.isSelected();
         boolean considerRain = rain.isSelected();
@@ -218,66 +218,66 @@ public class Weather extends javax.swing.JFrame {
         boolean considerDry = dry.isSelected();
         boolean considerSnow = snow.isSelected();
         boolean considerCold = cold.isSelected();
-
-        String command = "python SVM.py ";
-
+        
+        String command = "python test.py ";
+        
         if(considerIce){
             command += "1 ";
         }else{
             command += "0 ";
         }
-
+        
         if(considerRain){
             command += "1 ";
         }else{
             command += "0 ";
         }
-
+        
         if(considerWind){
             command += "1 ";
         }else{
             command += "0 ";
         }
-
+        
         if(considerDry){
             command += "1 ";
         }else{
             command += "0 ";
         }
-
+        
         if(considerSnow){
             command += "1 ";
         }else{
             command += "0 ";
         }
-
+        
         if(considerCold){
             command += "1 ";
         }else{
             command += "0 ";
         }
-
+        
         command += temperatureText.getText() + " " + precipitationText.getText() + " " + snowText.getText() + " " + windText.getText() + " " + iceText.getText();
         System.out.println(command);
         //Execute the Python SVM
         String s = null;
         try {
             Process p = Runtime.getRuntime().exec(command);
-
+            
             BufferedReader stdInput = new BufferedReader(new
                          InputStreamReader(p.getInputStream()));
-
+            
             BufferedReader stdError = new BufferedReader(new
                          InputStreamReader(p.getErrorStream()));
-
+            
             s = stdInput.readLine();
             System.out.println(s);
             if(s.equals("[ 1.]")){
                 dangerLabel.setVisible(true);
             } else{
                 dangerLabel.setVisible(false);
-
-            }
+                
+            }  
         } catch (IOException ex) {
             Logger.getLogger(Weather.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -287,7 +287,7 @@ public class Weather extends javax.swing.JFrame {
     private void precipitationTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precipitationTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_precipitationTextActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -295,7 +295,7 @@ public class Weather extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             javax.swing.UIManager.LookAndFeelInfo[] installedLookAndFeels=javax.swing.UIManager.getInstalledLookAndFeels();
@@ -323,7 +323,7 @@ public class Weather extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox cold;
     private javax.swing.JLabel dangerLabel;
@@ -342,5 +342,5 @@ public class Weather extends javax.swing.JFrame {
     private javax.swing.JCheckBox wind;
     private javax.swing.JTextField windText;
     // End of variables declaration//GEN-END:variables
-
+    
 }
