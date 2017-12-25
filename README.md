@@ -1,6 +1,11 @@
 # McMaster Engineering Competition (Programming Division) 2017 Weather Prediction Application - Team Kelvin and Friends
+
 *UPDATED: DECEMBER 24, 2017*
 
+---
+**NOTE:** This project is currently undergoing revisions to improve its performance and reliability. Part of this includes updating the method used to process the data to allow for easier interpretation, and testing the functionality of the checkboxes. Plans are also in place to bring this project to a more presentable state than what was originally built during the day long competition.
+
+---
 This project predicts weather using data from the [Raleigh-Durham International Airport collected by NOAA](https://catalog.data.gov/dataset/local-weather-archive). It was created for the McMaster Engineering Competition (Programming Division) 2017, where it received third place out of approximately 20 participating teams.
 
 ## Contents of the Repository
