@@ -1,5 +1,7 @@
 import sys
 from sklearn import svm
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 import numpy as np
 
 #Read arguments from the command line
@@ -46,8 +48,43 @@ for i in range(1, len(lines)):
     X.append(factors)
     y.append(float(line[6]))
 
-#Create and train the SVM
+#Create the SVM
 clf = svm.SVC()
+
+#Code used to determine accuracy of SVM
+#Results show that the SVM is 99% accurate when the data is split into a testing and training set
+    #attribute_train, attribute_test, label_train, label_test = train_test_split(X, y, test_size=0.25, train_size=0.75, random_state=23)
+    #clf.fit(attribute_train, label_train)
+    #predictions = clf.predict(attribute_test)
+    #print(accuracy_score(label_test, predictions))
+
+    #type_one_error = 0
+    #type_two_error = 0
+    #dangerous      = 0
+    #safe           = 0
+
+    #for i in range(len(predictions)):
+    #    if predictions[i] != label_test[i]:
+    #        if predictions[i] == 0:
+    #            type_two_error += 1
+    #        elif predictions[i] == 1:
+    #            type_one_error += 1
+    #    else:
+    #        if predictions[i] == 0:
+    #            safe += 1
+    #        else:
+    #            dangerous += 1
+
+    #print ("\nNumber of true positives:", dangerous)
+    #print ("Percentage of true positives", (float(dangerous)/len(label_test)) * 100, "%")
+    #print ("\nNumber of true negatives:", safe)
+    #print ("Percentage of true negatives:", (float(safe)/len(label_test)) * 100, "%")
+    #print ("\nNumber of type one errors:", type_one_error)
+    #print ("Percentage of type one errors:", (float(type_one_error) / len(label_test)) * 100, "%")
+    #print ("\nNumber of type two errors:", type_two_error)
+    #print ("Percentage of type two errors:", (float(type_two_error) / len(label_test)) * 100, "%")
+
+#Train the SVM
 clf.fit(X, y)
 
 #Determine which parameters to feed to the SVM
