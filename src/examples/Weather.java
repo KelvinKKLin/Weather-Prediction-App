@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 
 public class Weather extends javax.swing.JFrame {
     /** Creates new form Find */
@@ -207,11 +207,11 @@ public class Weather extends javax.swing.JFrame {
             command += "1 ";
             try{
                 if(Integer.parseInt(iceBox.getText()) != 1 && Integer.parseInt(iceBox.getText()) != 0){
-                    System.out.println("The ice value is out of range");
+                    JOptionPane.showMessageDialog(null, "The value of ice must be either 0 or 1.");
                     return;
                 }
             }catch(NumberFormatException nfe){
-                System.out.println("The value in the ice box is not an integer.");
+                JOptionPane.showMessageDialog(null, "The value of ice must be an integer.");
                 return;
             }
         }else{
@@ -222,11 +222,11 @@ public class Weather extends javax.swing.JFrame {
             command += "1 ";
             try{
                 if(Integer.parseInt(rainBox.getText()) < 0){
-                    System.out.println("The rain value is out of range");
+                    JOptionPane.showMessageDialog(null, "The value of rain must be greater than or equal to 0.");
                     return;
                 }
             }catch(NumberFormatException nfe){
-                System.out.println("The value in the rain box is not an integer.");
+                JOptionPane.showMessageDialog(null, "The value of rain must be an integer.");
                 return;
             }
         }else{
@@ -237,11 +237,11 @@ public class Weather extends javax.swing.JFrame {
             command += "1 ";
             try{
                 if(Integer.parseInt(windBox.getText()) < 0){
-                    System.out.println("The wind value is out of range");
+                    JOptionPane.showMessageDialog(null, "The value of wind must be greater than or equal to 0.");
                     return;
                 }
             }catch(NumberFormatException nfe){
-                System.out.println("The value in the wind box is not an integer.");
+                JOptionPane.showMessageDialog(null, "The value of wind must be an integer.");
                 return;
             }
         }else{
@@ -251,12 +251,12 @@ public class Weather extends javax.swing.JFrame {
         if(considerDry){
             command += "1 ";
             try{
-                if(Integer.parseInt(iceBox.getText()) != 1 && Integer.parseInt(iceBox.getText()) != 0){
-                    System.out.println("The dry value is out of range");
+                if(Integer.parseInt(dryBox.getText()) != 1 && Integer.parseInt(dryBox.getText()) != 0){
+                    JOptionPane.showMessageDialog(null, "The value of dry must be either 0 or 1.");
                     return;
                 }
             }catch(NumberFormatException nfe){
-                System.out.println("The value in the dry box is not an integer.");
+                JOptionPane.showMessageDialog(null, "The value of dry must be an integer.");
                 return;
             }
         }else{
@@ -267,11 +267,11 @@ public class Weather extends javax.swing.JFrame {
             command += "1 ";
             try{
                 if(Integer.parseInt(snowBox.getText()) < 0){
-                    System.out.println("The snow value is out of range");
+                    JOptionPane.showMessageDialog(null, "The value of snow must be greater than or equal to 0.");
                     return;
                 }
             }catch(NumberFormatException nfe){
-                System.out.println("The value in the snow box is not an integer.");
+                JOptionPane.showMessageDialog(null, "The value of snow must be an integer");
                 return;
             }
         }else{
@@ -281,20 +281,18 @@ public class Weather extends javax.swing.JFrame {
         if(considerCold){
             command += "1 ";
             try{
-                if(Integer.parseInt(snowBox.getText()) < 0){
-                    System.out.println("The cold value is out of range");
+                if(Integer.parseInt(coldBox.getText()) < 0){
+                    JOptionPane.showMessageDialog(null, "The value of cold must be greater than or equal to 0.");
                     return;
                 }
             }catch(NumberFormatException nfe){
-                System.out.println("The value in the cold box is not an integer.");
+                JOptionPane.showMessageDialog(null, "The value of cold must be an integer.");
                 return;
             }
         }else{
             command += "0 ";
         }
 
-        
-        
         command += iceBox.getText() + " " + rainBox.getText() + " " + windBox.getText() + " " + dryBox.getText() + " " + snowBox.getText() + " " + coldBox.getText();
         System.out.println(command);
         //Execute the Python SVM
@@ -319,7 +317,7 @@ public class Weather extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Weather.class.getName()).log(Level.SEVERE, null, ex);
         }
-        temperatureLabel.setText(iceBox.getText());
+        temperatureLabel.setText(coldBox.getText());
     }//GEN-LAST:event_submitButtonActionPerformed
     
     /**
