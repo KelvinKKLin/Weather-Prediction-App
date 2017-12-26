@@ -25,6 +25,11 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="361" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
@@ -33,11 +38,6 @@
                       <Component id="temperatureLabel" min="-2" pref="102" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" pref="297" max="-2" attributes="0"/>
-                          <EmptySpace pref="79" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -58,31 +58,30 @@
                               </Group>
                           </Group>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="iceBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="rainBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="windBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="dryBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="snowBox" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="coldBox" min="-2" pref="62" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabel3" min="-2" pref="297" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Component id="dangerLabel" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="121" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="temperatureText" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="precipitationText" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="snowText" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="windText" min="-2" pref="68" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="iceText" min="-2" pref="62" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,11 +110,12 @@
               <Component id="jLabel3" min="-2" pref="91" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="temperatureText" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="precipitationText" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="snowText" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="windText" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="iceText" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="iceBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="windBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dryBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="snowBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="coldBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rainBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="33" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -130,18 +130,12 @@
         <Property name="text" type="java.lang.String" value="Ice"/>
         <Property name="name" type="java.lang.String" value="iceCheckBox" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iceActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="dry">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dry"/>
         <Property name="name" type="java.lang.String" value="dryCheckbox" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dryActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="rain">
       <Properties>
@@ -197,39 +191,36 @@
         <Property name="text" type="java.lang.String" value="Test"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="temperatureText">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Temperature"/>
-        <Property name="name" type="java.lang.String" value="temperatureBox" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="precipitationText">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Precipitation"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-        <Property name="name" type="java.lang.String" value="precipitationBox" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="precipitationTextActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="snowText">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Snow Depth"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-        <Property name="name" type="java.lang.String" value="snowBox" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="windText">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Wind"/>
-        <Property name="name" type="java.lang.String" value="windBox" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="iceText">
+    <Component class="javax.swing.JTextField" name="iceBox">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ice"/>
         <Property name="name" type="java.lang.String" value="iceBox" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="windBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Wind"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="name" type="java.lang.String" value="windBox" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="dryBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dry"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="name" type="java.lang.String" value="dryBox" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="snowBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Snow"/>
+        <Property name="name" type="java.lang.String" value="snowBox" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="coldBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cold"/>
+        <Property name="name" type="java.lang.String" value="coldBox" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
@@ -244,6 +235,12 @@
     <Component class="javax.swing.JLabel" name="temperatureLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Temperature"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="rainBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Rain"/>
+        <Property name="name" type="java.lang.String" value="rainBox" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -31,32 +31,23 @@ public class Weather extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         dangerLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        temperatureText = new javax.swing.JTextField();
-        precipitationText = new javax.swing.JTextField();
-        snowText = new javax.swing.JTextField();
-        windText = new javax.swing.JTextField();
-        iceText = new javax.swing.JTextField();
+        iceBox = new javax.swing.JTextField();
+        windBox = new javax.swing.JTextField();
+        dryBox = new javax.swing.JTextField();
+        snowBox = new javax.swing.JTextField();
+        coldBox = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         temperatureLabel = new javax.swing.JLabel();
+        rainBox = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Find");
 
         ice.setText("Ice");
         ice.setName("iceCheckBox"); // NOI18N
-        ice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iceActionPerformed(evt);
-            }
-        });
 
         dry.setText("Dry");
         dry.setName("dryCheckbox"); // NOI18N
-        dry.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dryActionPerformed(evt);
-            }
-        });
 
         rain.setText("Rain");
         rain.setName("rainCheckbox"); // NOI18N
@@ -83,27 +74,22 @@ public class Weather extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Test");
 
-        temperatureText.setText("Temperature");
-        temperatureText.setName("temperatureBox"); // NOI18N
+        iceBox.setText("Ice");
+        iceBox.setName("iceBox"); // NOI18N
 
-        precipitationText.setText("Precipitation");
-        precipitationText.setToolTipText("");
-        precipitationText.setName("precipitationBox"); // NOI18N
-        precipitationText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                precipitationTextActionPerformed(evt);
-            }
-        });
+        windBox.setText("Wind");
+        windBox.setToolTipText("");
+        windBox.setName("windBox"); // NOI18N
 
-        snowText.setText("Snow Depth");
-        snowText.setToolTipText("");
-        snowText.setName("snowBox"); // NOI18N
+        dryBox.setText("Dry");
+        dryBox.setToolTipText("");
+        dryBox.setName("dryBox"); // NOI18N
 
-        windText.setText("Wind");
-        windText.setName("windBox"); // NOI18N
+        snowBox.setText("Snow");
+        snowBox.setName("snowBox"); // NOI18N
 
-        iceText.setText("Ice");
-        iceText.setName("iceBox"); // NOI18N
+        coldBox.setText("Cold");
+        coldBox.setName("coldBox"); // NOI18N
 
         jButton1.setText("Submit");
         jButton1.setName("submitButton"); // NOI18N
@@ -115,10 +101,17 @@ public class Weather extends javax.swing.JFrame {
 
         temperatureLabel.setText("Temperature");
 
+        rainBox.setText("Rain");
+        rainBox.setName("rainBox"); // NOI18N
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(296, 296, 296)
+                .add(jButton1)
+                .addContainerGap(361, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
@@ -127,10 +120,6 @@ public class Weather extends javax.swing.JFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(temperatureLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 102, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(layout.createSequentialGroup()
-                            .add(185, 185, 185)
-                            .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 297, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 79, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                             .add(95, 95, 95)
                             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -145,26 +134,26 @@ public class Weather extends javax.swing.JFrame {
                                 .add(layout.createSequentialGroup()
                                     .add(snow, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .add(cold, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
+                                    .add(cold, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                        .add(layout.createSequentialGroup()
+                            .add(185, 185, 185)
+                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                .add(layout.createSequentialGroup()
+                                    .add(iceBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(18, 18, 18)
+                                    .add(rainBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(18, 18, 18)
+                                    .add(windBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(18, 18, 18)
+                                    .add(dryBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(18, 18, 18)
+                                    .add(snowBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 68, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(18, 18, 18)
+                                    .add(coldBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 62, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 297, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(42, 42, 42)))
                     .add(dangerLabel))
                 .add(0, 121, Short.MAX_VALUE))
-            .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(122, 122, 122)
-                        .add(temperatureText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(precipitationText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(snowText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(windText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 68, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(iceText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 62, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(296, 296, 296)
-                        .add(jButton1)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -188,11 +177,12 @@ public class Weather extends javax.swing.JFrame {
                 .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 91, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(temperatureText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(precipitationText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(snowText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(windText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(iceText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(iceBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(windBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(dryBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(snowBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(coldBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(rainBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 33, Short.MAX_VALUE)
                 .add(jButton1)
                 .add(35, 35, 35))
@@ -200,14 +190,6 @@ public class Weather extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void dryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dryActionPerformed
-
-    private void iceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_iceActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -257,7 +239,7 @@ public class Weather extends javax.swing.JFrame {
             command += "0 ";
         }
 
-        command += temperatureText.getText() + " " + precipitationText.getText() + " " + snowText.getText() + " " + windText.getText() + " " + iceText.getText();
+        command += iceBox.getText() + " " + rainBox.getText() + " " + windBox.getText() + " " + dryBox.getText() + " " + snowBox.getText() + " " + coldBox.getText();
         System.out.println(command);
         //Execute the Python SVM
         String s = null;
@@ -281,12 +263,8 @@ public class Weather extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Weather.class.getName()).log(Level.SEVERE, null, ex);
         }
-        temperatureLabel.setText(temperatureText.getText());
+        temperatureLabel.setText(iceBox.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void precipitationTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precipitationTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_precipitationTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,21 +304,22 @@ public class Weather extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox cold;
+    private javax.swing.JTextField coldBox;
     private javax.swing.JLabel dangerLabel;
     private javax.swing.JCheckBox dry;
+    private javax.swing.JTextField dryBox;
     private javax.swing.JCheckBox ice;
-    private javax.swing.JTextField iceText;
+    private javax.swing.JTextField iceBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField precipitationText;
     private javax.swing.JCheckBox rain;
+    private javax.swing.JTextField rainBox;
     private javax.swing.JCheckBox snow;
-    private javax.swing.JTextField snowText;
+    private javax.swing.JTextField snowBox;
     private javax.swing.JLabel temperatureLabel;
-    private javax.swing.JTextField temperatureText;
     private javax.swing.JCheckBox wind;
-    private javax.swing.JTextField windText;
+    private javax.swing.JTextField windBox;
     // End of variables declaration//GEN-END:variables
 
 }
