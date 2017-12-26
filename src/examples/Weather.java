@@ -36,7 +36,7 @@ public class Weather extends javax.swing.JFrame {
         dryBox = new javax.swing.JTextField();
         snowBox = new javax.swing.JTextField();
         coldBox = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
         temperatureLabel = new javax.swing.JLabel();
         rainBox = new javax.swing.JTextField();
 
@@ -91,11 +91,11 @@ public class Weather extends javax.swing.JFrame {
         coldBox.setText("Cold");
         coldBox.setName("coldBox"); // NOI18N
 
-        jButton1.setText("Submit");
-        jButton1.setName("submitButton"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        submitButton.setText("Submit");
+        submitButton.setName("submitButton"); // NOI18N
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                submitButtonActionPerformed(evt);
             }
         });
 
@@ -110,7 +110,7 @@ public class Weather extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(296, 296, 296)
-                .add(jButton1)
+                .add(submitButton)
                 .addContainerGap(361, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -184,14 +184,14 @@ public class Weather extends javax.swing.JFrame {
                     .add(coldBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(rainBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 33, Short.MAX_VALUE)
-                .add(jButton1)
+                .add(submitButton)
                 .add(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
 
         //Read the values from the checkboxes
         boolean considerIce = ice.isSelected();
@@ -205,40 +205,96 @@ public class Weather extends javax.swing.JFrame {
 
         if(considerIce){
             command += "1 ";
+            try{
+                if(Integer.parseInt(iceBox.getText()) != 1 && Integer.parseInt(iceBox.getText()) != 0){
+                    System.out.println("The ice value is out of range");
+                    return;
+                }
+            }catch(NumberFormatException nfe){
+                System.out.println("The value in the ice box is not an integer.");
+                return;
+            }
         }else{
             command += "0 ";
         }
 
         if(considerRain){
             command += "1 ";
+            try{
+                if(Integer.parseInt(rainBox.getText()) < 0){
+                    System.out.println("The rain value is out of range");
+                    return;
+                }
+            }catch(NumberFormatException nfe){
+                System.out.println("The value in the rain box is not an integer.");
+                return;
+            }
         }else{
             command += "0 ";
         }
 
         if(considerWind){
             command += "1 ";
+            try{
+                if(Integer.parseInt(windBox.getText()) < 0){
+                    System.out.println("The wind value is out of range");
+                    return;
+                }
+            }catch(NumberFormatException nfe){
+                System.out.println("The value in the wind box is not an integer.");
+                return;
+            }
         }else{
             command += "0 ";
         }
 
         if(considerDry){
             command += "1 ";
+            try{
+                if(Integer.parseInt(iceBox.getText()) != 1 && Integer.parseInt(iceBox.getText()) != 0){
+                    System.out.println("The dry value is out of range");
+                    return;
+                }
+            }catch(NumberFormatException nfe){
+                System.out.println("The value in the dry box is not an integer.");
+                return;
+            }
         }else{
             command += "0 ";
         }
 
         if(considerSnow){
             command += "1 ";
+            try{
+                if(Integer.parseInt(snowBox.getText()) < 0){
+                    System.out.println("The snow value is out of range");
+                    return;
+                }
+            }catch(NumberFormatException nfe){
+                System.out.println("The value in the snow box is not an integer.");
+                return;
+            }
         }else{
             command += "0 ";
         }
 
         if(considerCold){
             command += "1 ";
+            try{
+                if(Integer.parseInt(snowBox.getText()) < 0){
+                    System.out.println("The cold value is out of range");
+                    return;
+                }
+            }catch(NumberFormatException nfe){
+                System.out.println("The value in the cold box is not an integer.");
+                return;
+            }
         }else{
             command += "0 ";
         }
 
+        
+        
         command += iceBox.getText() + " " + rainBox.getText() + " " + windBox.getText() + " " + dryBox.getText() + " " + snowBox.getText() + " " + coldBox.getText();
         System.out.println(command);
         //Execute the Python SVM
@@ -264,8 +320,8 @@ public class Weather extends javax.swing.JFrame {
             Logger.getLogger(Weather.class.getName()).log(Level.SEVERE, null, ex);
         }
         temperatureLabel.setText(iceBox.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }//GEN-LAST:event_submitButtonActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -310,13 +366,13 @@ public class Weather extends javax.swing.JFrame {
     private javax.swing.JTextField dryBox;
     private javax.swing.JCheckBox ice;
     private javax.swing.JTextField iceBox;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JCheckBox rain;
     private javax.swing.JTextField rainBox;
     private javax.swing.JCheckBox snow;
     private javax.swing.JTextField snowBox;
+    private javax.swing.JButton submitButton;
     private javax.swing.JLabel temperatureLabel;
     private javax.swing.JCheckBox wind;
     private javax.swing.JTextField windBox;
