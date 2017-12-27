@@ -191,28 +191,32 @@ public class Weather extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-
-        //Read the values from the checkboxes
-        boolean considerIce = ice.isSelected();
-        boolean considerRain = rain.isSelected();
-        boolean considerWind = wind.isSelected();
-        boolean considerDry = dry.isSelected();
-        boolean considerSnow = snow.isSelected();
-        boolean considerCold = cold.isSelected();
-
+    /**
+     * This method generates the command needed to activate the SVM.
+     * @param considerIce   Whether the ice attribute should be considered
+     * @param considerRain  Whether the rain attribute should be considered
+     * @param considerWind  Whether the wind attribute should be considered
+     * @param considerDry   Whether the dry attribute should be considered
+     * @param considerSnow  Whether the snow attribute should be considered
+     * @param considerCold  Whether the cold attribute should be considered
+     * @return The command needed to activate the SVM or "" if there is an error
+     */
+    private String generateCommand(boolean considerIce, boolean considerRain, boolean considerWind, boolean considerDry, boolean considerSnow, boolean considerCold){
+        //The command used to start the SVM
         String command = "python SVM.py ";
 
+        //Check the values of each box checked, and append the corresponding flag
+        //to the SVM control
         if(considerIce){
             command += "1 ";
             try{
                 if(Integer.parseInt(iceBox.getText()) != 1 && Integer.parseInt(iceBox.getText()) != 0){
                     JOptionPane.showMessageDialog(null, "The value of ice must be either 0 or 1.");
-                    return;
+                    return "";
                 }
             }catch(NumberFormatException nfe){
                 JOptionPane.showMessageDialog(null, "The value of ice must be an integer.");
-                return;
+                return "";
             }
         }else{
             command += "0 ";
@@ -223,11 +227,11 @@ public class Weather extends javax.swing.JFrame {
             try{
                 if(Integer.parseInt(rainBox.getText()) < 0){
                     JOptionPane.showMessageDialog(null, "The value of rain must be greater than or equal to 0.");
-                    return;
+                    return "";
                 }
             }catch(NumberFormatException nfe){
                 JOptionPane.showMessageDialog(null, "The value of rain must be an integer.");
-                return;
+                return "";
             }
         }else{
             command += "0 ";
@@ -238,11 +242,11 @@ public class Weather extends javax.swing.JFrame {
             try{
                 if(Integer.parseInt(windBox.getText()) < 0){
                     JOptionPane.showMessageDialog(null, "The value of wind must be greater than or equal to 0.");
-                    return;
+                    return "";
                 }
             }catch(NumberFormatException nfe){
                 JOptionPane.showMessageDialog(null, "The value of wind must be an integer.");
-                return;
+                return "";
             }
         }else{
             command += "0 ";
@@ -253,11 +257,11 @@ public class Weather extends javax.swing.JFrame {
             try{
                 if(Integer.parseInt(dryBox.getText()) != 1 && Integer.parseInt(dryBox.getText()) != 0){
                     JOptionPane.showMessageDialog(null, "The value of dry must be either 0 or 1.");
-                    return;
+                    return "";
                 }
             }catch(NumberFormatException nfe){
                 JOptionPane.showMessageDialog(null, "The value of dry must be an integer.");
-                return;
+                return "";
             }
         }else{
             command += "0 ";
@@ -268,11 +272,11 @@ public class Weather extends javax.swing.JFrame {
             try{
                 if(Integer.parseInt(snowBox.getText()) < 0){
                     JOptionPane.showMessageDialog(null, "The value of snow must be greater than or equal to 0.");
-                    return;
+                    return "";
                 }
             }catch(NumberFormatException nfe){
                 JOptionPane.showMessageDialog(null, "The value of snow must be an integer");
-                return;
+                return "";
             }
         }else{
             command += "0 ";
@@ -283,18 +287,48 @@ public class Weather extends javax.swing.JFrame {
             try{
                 if(Integer.parseInt(coldBox.getText()) < 0){
                     JOptionPane.showMessageDialog(null, "The value of cold must be greater than or equal to 0.");
-                    return;
+                    return "";
                 }
             }catch(NumberFormatException nfe){
                 JOptionPane.showMessageDialog(null, "The value of cold must be an integer.");
-                return;
+                return "";
             }
         }else{
             command += "0 ";
         }
 
+        //Concatenate the command
         command += iceBox.getText() + " " + rainBox.getText() + " " + windBox.getText() + " " + dryBox.getText() + " " + snowBox.getText() + " " + coldBox.getText();
-        System.out.println(command);
+        return command;
+    }
+    
+    /**
+     * This method handles the actions preformed when the submit button is pressed.
+     * 
+     * It checks to see which checkboxes are selected, and then verifies that the values
+     * present in the textboxes of the corresponding checkboxes are within range. If so,
+     * then the program will concatenate the values and launch the python based SVM.
+     * Otherwise, a popup will appear to alert the user of any errors.
+     * @param evt The action clicked event
+     */
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+
+        //Read the values from the checkboxes
+        boolean considerIce = ice.isSelected();
+        boolean considerRain = rain.isSelected();
+        boolean considerWind = wind.isSelected();
+        boolean considerDry = dry.isSelected();
+        boolean considerSnow = snow.isSelected();
+        boolean considerCold = cold.isSelected();
+
+        //Generate the command needed to activate the SVM
+        String command = generateCommand(considerIce, considerRain, considerWind, considerDry, considerSnow, considerCold);
+
+        //Check to see if the command is empty, and return if so
+        if(command.equals("")){
+            return;
+        }
+        
         //Execute the Python SVM
         String s = null;
         try {
@@ -306,8 +340,10 @@ public class Weather extends javax.swing.JFrame {
             BufferedReader stdError = new BufferedReader(new
                          InputStreamReader(p.getErrorStream()));
 
+            //The SVM output
             s = stdInput.readLine();
-            System.out.println(s);
+            
+            //Parse the output and determine whether the weather condition is dangerous
             if(s.equals("[ 1.]")){
                 dangerLabel.setVisible(true);
             } else{
@@ -317,10 +353,13 @@ public class Weather extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Weather.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        //Update the temperature text box
         temperatureLabel.setText(coldBox.getText());
     }//GEN-LAST:event_submitButtonActionPerformed
     
     /**
+     * The entry point to the program.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
