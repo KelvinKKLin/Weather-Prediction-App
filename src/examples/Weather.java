@@ -192,6 +192,117 @@ public class Weather extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * This method generates the command needed to activate the SVM.
+     * @param considerIce   Whether the ice attribute should be considered
+     * @param considerRain  Whether the rain attribute should be considered
+     * @param considerWind  Whether the wind attribute should be considered
+     * @param considerDry   Whether the dry attribute should be considered
+     * @param considerSnow  Whether the snow attribute should be considered
+     * @param considerCold  Whether the cold attribute should be considered
+     * @return The command needed to activate the SVM or "" if there is an error
+     */
+    private String generateCommand(boolean considerIce, boolean considerRain, boolean considerWind, boolean considerDry, boolean considerSnow, boolean considerCold){
+        //The command used to start the SVM
+        String command = "python SVM.py ";
+
+        //Check the values of each box checked, and append the corresponding flag
+        //to the SVM control
+        if(considerIce){
+            command += "1 ";
+            try{
+                if(Integer.parseInt(iceBox.getText()) != 1 && Integer.parseInt(iceBox.getText()) != 0){
+                    JOptionPane.showMessageDialog(null, "The value of ice must be either 0 or 1.");
+                    return "";
+                }
+            }catch(NumberFormatException nfe){
+                JOptionPane.showMessageDialog(null, "The value of ice must be an integer.");
+                return "";
+            }
+        }else{
+            command += "0 ";
+        }
+
+        if(considerRain){
+            command += "1 ";
+            try{
+                if(Integer.parseInt(rainBox.getText()) < 0){
+                    JOptionPane.showMessageDialog(null, "The value of rain must be greater than or equal to 0.");
+                    return "";
+                }
+            }catch(NumberFormatException nfe){
+                JOptionPane.showMessageDialog(null, "The value of rain must be an integer.");
+                return "";
+            }
+        }else{
+            command += "0 ";
+        }
+
+        if(considerWind){
+            command += "1 ";
+            try{
+                if(Integer.parseInt(windBox.getText()) < 0){
+                    JOptionPane.showMessageDialog(null, "The value of wind must be greater than or equal to 0.");
+                    return "";
+                }
+            }catch(NumberFormatException nfe){
+                JOptionPane.showMessageDialog(null, "The value of wind must be an integer.");
+                return "";
+            }
+        }else{
+            command += "0 ";
+        }
+
+        if(considerDry){
+            command += "1 ";
+            try{
+                if(Integer.parseInt(dryBox.getText()) != 1 && Integer.parseInt(dryBox.getText()) != 0){
+                    JOptionPane.showMessageDialog(null, "The value of dry must be either 0 or 1.");
+                    return "";
+                }
+            }catch(NumberFormatException nfe){
+                JOptionPane.showMessageDialog(null, "The value of dry must be an integer.");
+                return "";
+            }
+        }else{
+            command += "0 ";
+        }
+
+        if(considerSnow){
+            command += "1 ";
+            try{
+                if(Integer.parseInt(snowBox.getText()) < 0){
+                    JOptionPane.showMessageDialog(null, "The value of snow must be greater than or equal to 0.");
+                    return "";
+                }
+            }catch(NumberFormatException nfe){
+                JOptionPane.showMessageDialog(null, "The value of snow must be an integer");
+                return "";
+            }
+        }else{
+            command += "0 ";
+        }
+
+        if(considerCold){
+            command += "1 ";
+            try{
+                if(Integer.parseInt(coldBox.getText()) < 0){
+                    JOptionPane.showMessageDialog(null, "The value of cold must be greater than or equal to 0.");
+                    return "";
+                }
+            }catch(NumberFormatException nfe){
+                JOptionPane.showMessageDialog(null, "The value of cold must be an integer.");
+                return "";
+            }
+        }else{
+            command += "0 ";
+        }
+
+        //Concatenate the command
+        command += iceBox.getText() + " " + rainBox.getText() + " " + windBox.getText() + " " + dryBox.getText() + " " + snowBox.getText() + " " + coldBox.getText();
+        return command;
+    }
+    
+    /**
      * This method handles the actions preformed when the submit button is pressed.
      * 
      * It checks to see which checkboxes are selected, and then verifies that the values
@@ -210,104 +321,14 @@ public class Weather extends javax.swing.JFrame {
         boolean considerSnow = snow.isSelected();
         boolean considerCold = cold.isSelected();
 
-        //The command used to start the SVM
-        String command = "python SVM.py ";
+        //Generate the command needed to activate the SVM
+        String command = generateCommand(considerIce, considerRain, considerWind, considerDry, considerSnow, considerCold);
 
-        //Check the values of each box checked, and append the corresponding flag
-        //to the SVM control
-        if(considerIce){
-            command += "1 ";
-            try{
-                if(Integer.parseInt(iceBox.getText()) != 1 && Integer.parseInt(iceBox.getText()) != 0){
-                    JOptionPane.showMessageDialog(null, "The value of ice must be either 0 or 1.");
-                    return;
-                }
-            }catch(NumberFormatException nfe){
-                JOptionPane.showMessageDialog(null, "The value of ice must be an integer.");
-                return;
-            }
-        }else{
-            command += "0 ";
+        //Check to see if the command is empty, and return if so
+        if(command.equals("")){
+            return;
         }
-
-        if(considerRain){
-            command += "1 ";
-            try{
-                if(Integer.parseInt(rainBox.getText()) < 0){
-                    JOptionPane.showMessageDialog(null, "The value of rain must be greater than or equal to 0.");
-                    return;
-                }
-            }catch(NumberFormatException nfe){
-                JOptionPane.showMessageDialog(null, "The value of rain must be an integer.");
-                return;
-            }
-        }else{
-            command += "0 ";
-        }
-
-        if(considerWind){
-            command += "1 ";
-            try{
-                if(Integer.parseInt(windBox.getText()) < 0){
-                    JOptionPane.showMessageDialog(null, "The value of wind must be greater than or equal to 0.");
-                    return;
-                }
-            }catch(NumberFormatException nfe){
-                JOptionPane.showMessageDialog(null, "The value of wind must be an integer.");
-                return;
-            }
-        }else{
-            command += "0 ";
-        }
-
-        if(considerDry){
-            command += "1 ";
-            try{
-                if(Integer.parseInt(dryBox.getText()) != 1 && Integer.parseInt(dryBox.getText()) != 0){
-                    JOptionPane.showMessageDialog(null, "The value of dry must be either 0 or 1.");
-                    return;
-                }
-            }catch(NumberFormatException nfe){
-                JOptionPane.showMessageDialog(null, "The value of dry must be an integer.");
-                return;
-            }
-        }else{
-            command += "0 ";
-        }
-
-        if(considerSnow){
-            command += "1 ";
-            try{
-                if(Integer.parseInt(snowBox.getText()) < 0){
-                    JOptionPane.showMessageDialog(null, "The value of snow must be greater than or equal to 0.");
-                    return;
-                }
-            }catch(NumberFormatException nfe){
-                JOptionPane.showMessageDialog(null, "The value of snow must be an integer");
-                return;
-            }
-        }else{
-            command += "0 ";
-        }
-
-        if(considerCold){
-            command += "1 ";
-            try{
-                if(Integer.parseInt(coldBox.getText()) < 0){
-                    JOptionPane.showMessageDialog(null, "The value of cold must be greater than or equal to 0.");
-                    return;
-                }
-            }catch(NumberFormatException nfe){
-                JOptionPane.showMessageDialog(null, "The value of cold must be an integer.");
-                return;
-            }
-        }else{
-            command += "0 ";
-        }
-
-        //Concatenate the command
-        command += iceBox.getText() + " " + rainBox.getText() + " " + windBox.getText() + " " + dryBox.getText() + " " + snowBox.getText() + " " + coldBox.getText();
-
+        
         //Execute the Python SVM
         String s = null;
         try {
